@@ -1,0 +1,11 @@
+.container {
+
+    width: 30%;
+    border: 2px dashed purple;
+    border-radius: 15px;
+}
+
+.parrafo {
+    color:yellow;
+    font-size: 35px;
+}

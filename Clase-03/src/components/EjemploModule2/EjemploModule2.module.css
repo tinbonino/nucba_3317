@@ -1,0 +1,11 @@
+.container {
+
+    width: 30%;
+    border: 5px solid rgb(168, 26, 26);
+    border-radius: 45px;
+}
+
+.parrafo {
+    color:rgb(29, 193, 196);
+    font-size: 25px;
+}
