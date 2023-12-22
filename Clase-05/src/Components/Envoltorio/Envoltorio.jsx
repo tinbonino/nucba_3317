@@ -14,7 +14,9 @@ const EnvoltorioGeneral = styled.div`
 
 function Envoltorio({children}) {
   return (
-    <EnvoltorioGeneral>{children}</EnvoltorioGeneral>
+    <EnvoltorioGeneral>
+      {children}
+    </EnvoltorioGeneral>
   )
 }
 
