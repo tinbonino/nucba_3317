@@ -5,7 +5,6 @@ import Layout from "./components/Layout/Layout";
 import Navbar from "./components/Navbar/Navbar"
 import CardsProductos from "./components/Productos/CardsProductos"
 
-
 function App() {
 
 

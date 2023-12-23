@@ -41,4 +41,10 @@ export const categorias = [
 		title: "Batidukis",
 		category: "Batidukis",
 	},
+	{
+		id: 8,
+		img: "https://res.cloudinary.com/dcatzxqqf/image/upload/v1656648466/coding/NucbaZappi/Categorias/batidos_njcyfi.png",
+		title: "Birrita de Viernes",
+		category: "Cervezas",
+	},
 ];
