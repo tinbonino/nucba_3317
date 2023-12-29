@@ -1,0 +1,13 @@
+#container {
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    height: 150px;
+    width: 150px;
+    background-color: crimson;
+    border-radius: 15px;
+    text-align: center;
+
+}
