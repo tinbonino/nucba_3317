@@ -1,22 +1,23 @@
 export const productos= [
     {
         id: 1,
-        nombre:"Empanada",
-        precio:"$450"
+        nombre:"Fernet Branca 750cc",
+        precio:"$7800"
     },
     {
         id: 2,
-        nombre:"Muzzarella",
-        precio:"$4450"
+        nombre:"Vino",
+        precio:"$3800"
     },
     {
         id: 3,
-        nombre:"Calabresa",
-        precio:"$5450"
+        nombre:"Cerveza",
+        precio:"$1800"
     },
     {
         id:4,
-        nombre:"Matambre",
-        precio:"$9450"
+        nombre:"Vittone",
+        precio:"Gratis"
     },
+   
 ]

@@ -1,5 +1,6 @@
+import Edad from "./Edad"
 import { Outlet, Link } from "react-router-dom"
-function Layout() {
+function Layout({auth,setAuth}) {
   return (
     <>
         <nav>
@@ -12,6 +13,9 @@ function Layout() {
                 </li>
                 <li>
                     <Link to="productos">Productos</Link>
+                </li>
+                <li>
+                    <Edad auth={auth} setAuth={setAuth}/>
                 </li>
             </ul>
         </nav>
