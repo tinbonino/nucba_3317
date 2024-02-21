@@ -1,17 +1,16 @@
-import {Products} from "../../data/";
+// import {Products} from "../../data/";
 import CardProducto from './CardProducto';
 import Button from '../UI/Button/Button';
-
+import {useSelector} from "react-redux"
 import { ProductosContainer } from './CardsProductosStyles';
 import { ButtonContainerStyled } from '../../pages/Home/HomeStyles';
 
 const CardsProductos = () => {
-  console.log(Object.entries(Products));
-  console.log(Products);
+  let products = useSelector((state)=> state.products.products)
   return (
     <>
       <ProductosContainer>
-          {Object.entries(Products).map(([,foods]) =>
+          {Object.entries(products).map(([,foods]) =>
           foods.map((food)=><CardProducto key={food.id} {...food} />)
           )}
       </ProductosContainer>

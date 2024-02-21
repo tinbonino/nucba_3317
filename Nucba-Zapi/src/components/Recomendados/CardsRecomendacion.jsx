@@ -1,8 +1,9 @@
 import CardRecomendacion from "./CardRecomendacion";
-import { recommended } from "../../data";
 import { CardsContainer } from "./CardsRecomendacionStyled";
+import {useSelector} from "react-redux"
 
 const CardsRecomendacion = () => {
+  const {recommended} = useSelector((state)=>state.recommeded)
   return (
     <CardsContainer gridLength={4}>
       {recommended.map((recomendado)=>(
