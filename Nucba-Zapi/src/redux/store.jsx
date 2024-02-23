@@ -5,8 +5,7 @@ import storage from "redux-persist/lib/storage";
 import categoriesReducer from "./categories/categoriesSlice";
 import productsReducer from "./products/productsSlice";
 import recommendedReducer from "./recommended/recommendedSlice";
-//npm install @reduxjs/toolkit 
-//npm install redux-persist
+
 const reducers = combineReducers({
   recommended: recommendedReducer,
   categories: categoriesReducer,
@@ -23,6 +22,12 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
+
+
 
 export const persistor = persistStore(store);

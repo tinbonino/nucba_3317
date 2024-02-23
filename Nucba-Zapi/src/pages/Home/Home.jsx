@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import Categorias from "../../components/Categorias/Categorias";
 import Hero from "../../components/Hero/Hero";
 import CardsProductos from "../../components/Productos/CardsProductos";
@@ -11,11 +12,20 @@ import {
 } from "./HomeStyles";
 
 function Home() {
+  const productsRef = useRef();
+
+  const doScroll = () => {
+    window.scrollTo(
+      productsRef.current.getBoundingClientRect().x,
+      productsRef.current.getBoundingClientRect().y
+    );
+  };
+
   return (
     <HomeWrapper>
       {/* Hero Section */}
 
-      <Hero />
+      <Hero doScroll={doScroll} />
 
       {/* Recomendados Section */}
       <RecomendadosWrapper>
@@ -30,7 +40,8 @@ function Home() {
       </CategoriasWrapper>
 
       {/* Populares Section*/}
-      <ProductosWrapper>
+      {/* AGREGAR ACA LA REF DE PRODUCTSREF */}
+      <ProductosWrapper ref={productsRef}>
         <h2>Nuestros productos</h2>
         <CardsProductos />
       </ProductosWrapper>
