@@ -1,14 +1,18 @@
 import Input from "../../UI/Input/Input";
 import Submit from "../../UI/Submit/Submit";
-
+import { checkoutValidationSchema,checkoutInitialValues } from "../../../formik";
 import { CheckoutDatosStyled, Form, Formik } from "./CheckoutFormStyles";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({cartItems}) => {
   return (
     <CheckoutDatosStyled>
       <h2>Ingresá tus datos</h2>
-      <Formik>
-        <Form>
+      <Formik
+      initialValues={checkoutInitialValues}
+      validationSchema={checkoutValidationSchema}
+      onSubmit={(values)=>console.log(values)}
+      >
+      <Form>
           <Input
             htmlFor="nombre"
             type="text"
@@ -42,7 +46,7 @@ const CheckoutForm = () => {
             Dirección
           </Input>
           <div>
-            <Submit disabled="true">Iniciar Pedido</Submit>
+            <Submit disabled={!cartItems.length}>Iniciar Pedido</Submit>
           </div>
         </Form>
       </Formik>

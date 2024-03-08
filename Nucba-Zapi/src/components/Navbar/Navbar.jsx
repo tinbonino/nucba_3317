@@ -20,7 +20,7 @@ import {
 } from "./NavbarStyles";
 
 function Navbar() {
-  const [hiddenCart, setHiddenCart] = useState(true);
+
 
   const navigate = useNavigate();
 

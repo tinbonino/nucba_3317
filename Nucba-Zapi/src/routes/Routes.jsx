@@ -21,6 +21,17 @@ function Routes() {
 
       <Route path="/checkout" element={<Checkout />} />
 
+      <Route
+        path="/checkout"
+        element={
+          <ProtectedRoute redirectTo="/register">
+            <Checkout />
+          </ProtectedRoute>
+        }
+      />
+
+
+
       <Route path="*" element={<PageNotFound />} />
     </ReactDomRoutes>
   );

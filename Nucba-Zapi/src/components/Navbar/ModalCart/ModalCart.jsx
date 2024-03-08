@@ -105,16 +105,16 @@ const ModalCart = () => {
             <PriceContainerStyled>
               <SubtotalStyled>
                 <p>Subtotal:</p>
-                <span>{formatPrice(9000)}</span>
+                <span>{formatPrice(totalPrice)}</span>
               </SubtotalStyled>
               <EnvioStyled>
                 <p>Envio</p>
-                <span>{formatPrice(500)}</span>
+                <span>{formatPrice(shippingCost)}</span>
               </EnvioStyled>
               <hr />
               <TotalStyled>
                 <p>Total:</p>
-                <PriceStyled>{formatPrice(9000 + 500)}</PriceStyled>
+                <PriceStyled>{formatPrice(totalPrice + shippingCost)}</PriceStyled>
               </TotalStyled>
               <ButtonContainerStyled>
                 <Submit onClick={() => {

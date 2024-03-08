@@ -31,7 +31,7 @@ const ModalCartCard = ({img,title,desc,price,quantity,id}) => {
       <TextContainerStyled>
         <CardTitleStyled>{title}</CardTitleStyled>
         <TextStyled>{desc}</TextStyled>
-        <PriceStyled>{formatPrice({price})}</PriceStyled>
+        <PriceStyled>{formatPrice(price)}</PriceStyled>
       </TextContainerStyled>
       <QuantityContainerStyled>
         <Increase
