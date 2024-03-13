@@ -9,6 +9,9 @@ import CartIcon from "./CartIcon/CartIcon";
 import ModalCart from "./ModalCart/ModalCart";
 import ModalUser from "./ModalUser/ModalUser";
 
+import {useDispatch,useSelector} from "react-redux";
+import { toggleMenuHIdden } from "../../redux/user/userSlice";
+
 import {
   CartNavStyled,
   LinkContainerStyled,
@@ -21,6 +24,8 @@ import {
 
 function Navbar() {
 
+  const currentUser=useSelector(state=>state.user.currentUser);
+  const dispatch =useDispatch();
 
   const navigate = useNavigate();
 
@@ -51,8 +56,11 @@ function Navbar() {
         </CartNavStyled>
 
         <UserNavStyled>
-          <UserContainerStyled onClick={() => navigate("/register")}>
-            <SpanStyled>Inicia sesión</SpanStyled>
+          <UserContainerStyled onClick={() => 
+            currentUser? dispatch(toggleMenuHIdden()) : navigate("/register")}>
+            <SpanStyled>
+              {currentUser? `${currentUser.nombre}`:"Inicia sesión"}
+              </SpanStyled>
             <FaUserAlt />
           </UserContainerStyled>
         </UserNavStyled>

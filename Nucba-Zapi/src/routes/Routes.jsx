@@ -8,7 +8,7 @@ import MisOrdenes from "../pages/MisOrdenes/MisOrdenes";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Register from "../pages/Register/Register";
 import Resumen from "../pages/Resumen/Resumen";
-
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute"
 function Routes() {
   return (
     <ReactDomRoutes>
