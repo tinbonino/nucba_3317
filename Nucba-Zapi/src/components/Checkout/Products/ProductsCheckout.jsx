@@ -1,6 +1,7 @@
 import { formatPrice } from "../../../utils";
-import  Link  from "../../UI/Link/Link"
+
 import CardProductCheckout from "../../CardProductCheckout/CardProductCheckout";
+import Link from "../../UI/Link/Link";
 
 import {
   CardsWrapperStyled,
@@ -14,23 +15,21 @@ import {
   TotalStyled,
 } from "./ProductsCheckoutStyles";
 
-const ProductsCheckout = (cartItems,shippingCost,price) => {
+const ProductsCheckout = ({ cartItems, shippingCost, price }) => {
   return (
     <ProductosContainerStyled>
       <ProductsTitleStyled>Tu pedido</ProductsTitleStyled>
       <CardsWrapperStyled>
         {cartItems.length ? (
-          cartItems.map((item)=>(
-            <CardProductCheckout key={item.id}{...item}/>
-
+          cartItems.map((item) => (
+            <CardProductCheckout key={item.id} {...item} />
           ))
-        ): (
+        ) : (
           <>
-          <p>No seas amarrete, comprate algo amigo</p>
-          <Link/>
+            <p>No seas amarrete, compra algo</p>
+            <Link />
           </>
-        )
-      }
+        )}
       </CardsWrapperStyled>
       <PriceContainerStyled>
         <SubtotalStyled>
@@ -44,7 +43,9 @@ const ProductsCheckout = (cartItems,shippingCost,price) => {
         <HrStyled />
         <TotalStyled>
           <p>Total:</p>
-          <PriceTotalStyled>{formatPrice(price+shippingCost)}</PriceTotalStyled>
+          <PriceTotalStyled>
+            {formatPrice(price + shippingCost)}
+          </PriceTotalStyled>
         </TotalStyled>
       </PriceContainerStyled>
     </ProductosContainerStyled>

@@ -1,32 +1,29 @@
-import { formatPrice } from '../../utils';
+import { formatPrice } from "../../utils";
 
-import { BsPlusLg } from 'react-icons/bs';
-import { FaMinus } from 'react-icons/fa';
+import { BsPlusLg } from "react-icons/bs";
+import { FaMinus } from "react-icons/fa";
 
-import Count from '../UI/Count/Count';
-import Increase from '../UI/Increase/Increase';
+import Count from "../UI/Count/Count";
+import Increase from "../UI/Increase/Increase";
+
 import { IoMdTrash } from "react-icons/io";
-import {useDispatch} from "react-redux";
-import {addToCart, removeFromCart} from "../../redux/cart/cartSlice";
-
-
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../redux/cart/cartSlice";
 import {
   CardContainerStyled,
   CardInfoStyled,
   PriceStyled,
   ProductTitleStyled,
-  TextStyled,
   QuantityContainerStyled,
-} from './CardProductCheckoutStyles';
+  TextStyled,
+} from "./CardProductCheckoutStyles";
 
-const CardProductCheckout = ({img,title,desc,price,quantity,id}) => {
-  const dispatch=useDispatch();
+const CardProductCheckout = ({ img, title, desc, price, quantity, id }) => {
+  const dispatch = useDispatch();
+
   return (
     <CardContainerStyled>
-      <img
-        src={img}
-        alt={title}
-      />
+      <img src={img} alt={title} />
       <CardInfoStyled>
         <ProductTitleStyled>{title}</ProductTitleStyled>
         <TextStyled>{desc}</TextStyled>
@@ -34,14 +31,15 @@ const CardProductCheckout = ({img,title,desc,price,quantity,id}) => {
       </CardInfoStyled>
       <QuantityContainerStyled>
         <Increase
-          bgColor='var(--btn-gradient-secondary)'
-          onClick={()=>dispatch(removeFromCart(id))}
+          bgColor="var(--btn-gradient-secondary)"
+          onClick={() => dispatch(removeFromCart(id))}
         >
-          {quantity===1?<IoMdTrash/>:<FaMinus />}
-          
+          {quantity === 1 ? <IoMdTrash /> : <FaMinus />}
         </Increase>
         <Count>{quantity}</Count>
-        <Increase onClick={()=>dispatch(addToCart({img,title,desc,price,id}))}>
+        <Increase
+          onClick={() => dispatch(addToCart({ img, title, desc, price, id }))}
+        >
           <BsPlusLg />
         </Increase>
       </QuantityContainerStyled>

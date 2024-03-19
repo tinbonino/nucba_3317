@@ -1,5 +1,6 @@
 import { Routes as ReactDomRoutes, Route } from "react-router-dom";
 
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import Checkout from "../pages/Checkout/Checkout";
 import Felicitaciones from "../pages/Felicitaciones/Felicitaciones";
 import Home from "../pages/Home/Home";
@@ -8,7 +9,7 @@ import MisOrdenes from "../pages/MisOrdenes/MisOrdenes";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Register from "../pages/Register/Register";
 import Resumen from "../pages/Resumen/Resumen";
-import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute"
+
 function Routes() {
   return (
     <ReactDomRoutes>
@@ -19,8 +20,6 @@ function Routes() {
       <Route path="/felicitaciones" element={<Felicitaciones />} />
       <Route path="/resumen/:orderId" element={<Resumen />} />
 
-      <Route path="/checkout" element={<Checkout />} />
-
       <Route
         path="/checkout"
         element={
@@ -29,8 +28,6 @@ function Routes() {
           </ProtectedRoute>
         }
       />
-
-
 
       <Route path="*" element={<PageNotFound />} />
     </ReactDomRoutes>

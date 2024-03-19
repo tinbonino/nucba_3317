@@ -1,7 +1,9 @@
 import { AnimatePresence } from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
-import { setCurrentUser,toggleMenuHIdden } from "../../../redux/user/userSlice";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCurrentUser,
+  toggleMenuHidden,
+} from "../../../redux/user/userSlice";
 import {
   HrStyled,
   LinkStyled,
@@ -10,7 +12,7 @@ import {
 } from "./ModelUserStyles";
 
 const ModalUser = () => {
-  const {currentUser, hiddenMenu} =useSelector(state=>state.user);
+  const { currentUser, hiddenMenu } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   return (
@@ -23,16 +25,17 @@ const ModalUser = () => {
           transition={{ duration: 0.5 }}
           key="cart-user"
         >
-          <UsernameStyled>
-            {`Hola ${currentUser.nombre}!!`}
-          </UsernameStyled>
+          <UsernameStyled>{`Hola ${currentUser?.nombre}!!`}</UsernameStyled>
           <HrStyled />
           <LinkStyled to="/mis-ordenes">Mis Ordenes</LinkStyled>
-          <span onClick={() =>{
-            dispatch(setCurrentUser(null));
-            dispatch(toggleMenuHIdden());
-          }
-            }>Cerrar Sesion</span>
+          <span
+            onClick={() => {
+              dispatch(setCurrentUser(null));
+              dispatch(toggleMenuHidden());
+            }}
+          >
+            Cerrar Sesion
+          </span>
         </ModalContainerStyled>
       )}
     </AnimatePresence>

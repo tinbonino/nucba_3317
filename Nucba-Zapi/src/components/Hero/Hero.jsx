@@ -1,9 +1,10 @@
 import { AiOutlineSearch } from "react-icons/ai";
-import { useState } from "react";
-import {useDispatch,useSelector} from "react-redux";
-import { selectCategory } from "../../redux/categories/categoriesSlice";
+
 import Button from "../UI/Button/Button";
 
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategory } from "../../redux/categories/categoriesSlice";
 import {
   HeroContainerStyled,
   HeroFormStyled,
@@ -11,32 +12,34 @@ import {
   IconWrapperStyled,
 } from "./HeroStyles";
 
-const Hero = ({doScroll}) => {
-  const [value,setValue]=useState("");
+const Hero = ({ doScroll }) => {
+  const [value, setValue] = useState("");
 
-  const listOfCategories=useSelector(
-    (state)=> state.categories.categories)
-    .map((category)=>category.category);
+  const listOfCategories = useSelector(
+    (state) => state.categories.categories
+  ).map((category) => category.category);
 
-    const dispatch =useDispatch();
+  const dispatch = useDispatch();
 
-    const handlerSubmit=(e,value)=>{
-      e.preventDefault();
+  const handlerSubmit = (e, value) => {
+    e.preventDefault();
 
-      const newCategory=value.trim().toLowerCase().split(" ").join("");
+    const newCategory = value.trim().toLowerCase().split(" ").join("");
 
-      const selectedCategory = listOfCategories.find((category)=>category.toLowerCase()=== newCategory);
+    const selectedCategory = listOfCategories.find(
+      (category) => category.toLowerCase() === newCategory
+    );
 
-      if (selectedCategory) {
-        dispatch(selectCategory(selectedCategory));
-        doScroll();
-      } else {
-        return alert("No me inventes categorias!")
-      }
-
-      setValue("");
+    if (selectedCategory) {
+      dispatch(selectCategory(selectedCategory));
+      doScroll();
+    } else {
+      return alert("Categoría no encontrada");
     }
-  
+
+    setValue("");
+  };
+
   return (
     <HeroContainerStyled>
       <div>
@@ -44,7 +47,7 @@ const Hero = ({doScroll}) => {
         <HeroFormStyled>
           <HeroSearchBarStyled
             value={value}
-            onChange={(e)=> setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
             type="text"
             placeholder="Ej. Pizzas a la piedra"
           />
@@ -52,8 +55,7 @@ const Hero = ({doScroll}) => {
             <AiOutlineSearch />
           </IconWrapperStyled>
           <Button
-           
-            onClick={(e) => handlerSubmit(e,value)}
+            onClick={(e) => handlerSubmit(e, value)}
             radius="10"
             disabled={!value}
           >

@@ -7,9 +7,8 @@ import { IoMdTrash } from "react-icons/io";
 import Count from "../../UI/Count/Count";
 import Increase from "../../UI/Increase/Increase";
 
-import {useDispatch} from "react-redux";
-import { addToCart,removeFromCart } from "../../../redux/cart/cartSlice";
-
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../../redux/cart/cartSlice";
 import {
   CardTitleStyled,
   PriceStyled,
@@ -19,15 +18,12 @@ import {
   TextStyled,
 } from "./ModalCartStyles";
 
-const ModalCartCard = ({img,title,desc,price,quantity,id}) => {
+const ModalCartCard = ({ img, title, desc, price, quantity, id }) => {
+  const dispatch = useDispatch();
 
-  const dispatch =useDispatch();
   return (
     <ProductContainerStyled>
-      <img
-        src={img}
-        alt={title}
-      />
+      <img src={img} alt={title} />
       <TextContainerStyled>
         <CardTitleStyled>{title}</CardTitleStyled>
         <TextStyled>{desc}</TextStyled>
@@ -36,13 +32,14 @@ const ModalCartCard = ({img,title,desc,price,quantity,id}) => {
       <QuantityContainerStyled>
         <Increase
           bgColor="var(--btn-gradient-secondary)"
-          onClick={() =>dispatch(removeFromCart(id))}
+          onClick={() => dispatch(removeFromCart(id))}
         >
-          {quantity===1?<IoMdTrash/> :<FaMinus/>}
-         
+          {quantity === 1 ? <IoMdTrash /> : <FaMinus />}
         </Increase>
         <Count>{quantity}</Count>
-        <Increase onClick={() => dispatch(addToCart({img,title,desc,price,id}))}>
+        <Increase
+          onClick={() => dispatch(addToCart({ img, title, desc, price, id }))}
+        >
           <BsPlusLg />
         </Increase>
       </QuantityContainerStyled>
