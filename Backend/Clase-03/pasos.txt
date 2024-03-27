@@ -1,0 +1,9 @@
+npm install -g typescript   ** Instalo Typescript de forma global
+tsc --version               ** Chequeo la version instalada
+npm init -y                 ** Inicializamos un proyecto en node
+npm i typescript            ** instalamos typescript en el proyecto
+Creamos el tsconig.json     ** Contiene toda la informacion de configuracion de typescript
+----------------------------
+Ejecutamos watch para chequear errores en tiempo real: tsc --watch index.tsc
+npm i -g nodemon            **Instalamos de forma global nodemon 
+nodemon index.ts
