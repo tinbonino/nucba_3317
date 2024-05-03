@@ -1,6 +1,6 @@
 # Pasos
 
-- -npm init -y
+- npm init -y
 - npm i express
 - npm i typescript
 - tsc --init
