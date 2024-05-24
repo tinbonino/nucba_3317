@@ -1,0 +1,2 @@
+npm install bcryptjs cors dotenv express express-validator jsonwebtoken mongoose nodemailer randomstring
+npm install --save-dev @types/bcryptjs  @types/cors @types/express @types/express-validator @types/jsonwebtoken @types/nodemailer @types/nodemon @types/randomstring @types/node
