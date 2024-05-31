@@ -39,7 +39,7 @@ const UserSchema = new Schema<IUser>({
 //Con este método podemos enviar la data al usuario filtrando lo que elijamos. En este caso, no le enviamos al usuario el __V, password, _id o el codigo.
 
 UserSchema.methods.toJSON = function() {
-    const {__V,password,_id,code,...usuario}=this.toObject()
+    const {__v,password,_id,code,...usuario}=this.toObject()
     return usuario
 }
 
