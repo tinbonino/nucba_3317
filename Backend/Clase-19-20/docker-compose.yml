@@ -1,0 +1,38 @@
+# Version de docker compose
+version: '3.8'
+
+# Services me permite crear los contenedores que se van a comunicar gracias a compose
+services:
+  # Creacion de contenedor postgres
+  postgres:
+    # En qué imagen me voy a basar para este contenedor. Si no tiene version, instala la ultima, sino puedo hacer algo como postgres:9.6 para que instale dicha version.
+    # Esto lo que hace es ir a https://hub.docker.com/, buscar una imagen que coincida con el nombre de la image e instala la ultima version disponible
+    image: postgres
+    # Si algo falla, lo configuro para que siempre reinicie solo
+    restart: always
+    # En qué puerto se va a ejecutar. Postgres por defecto se ejecuta en el puerto 5432. Colocamos 2 veces porque el numero de la izquierda indica en qué puerto va a estar disponible en mi computadora y el de la derecha indica en qué puerto del contenedor de docker va a estar disponible
+    ports:
+      - "5432:5432"
+    # Configuraciones por defecto
+    environment:
+      # Donde hosteo la base de datos. En este caso es el localhost
+      - DATABASE_HOST=127.0.0.1
+      # Usuario por defecto en postgres
+      - POSTGRES_USER=nucba
+      - POSTGRES_PASSWORD=nucba
+      # Nombre por defecto de la DB a crear
+      - POSTGRES_DB=nucba
+
+  # Creacion de contenedor pgadmin
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      # Mail y contraseña por defecto para el pgadmin que vamos a levantar. No hace falta que existan realmente
+      PGADMIN_DEFAULT_EMAIL: nucba@nucba.com.ar
+      PGADMIN_DEFAULT_PASSWORD: nucba1234
+    # Por defecto funciona en el puerto 80
+    ports:
+      - "80:80"
+    # Esto hace que el pgadmin DEPENDA DE postgres. Es decir, que inicie despues de que postgres haya iniciado
+    depends_on:
+      - postgres
