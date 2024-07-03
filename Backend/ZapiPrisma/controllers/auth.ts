@@ -94,7 +94,7 @@ export const verifyUser = async (req: Request, res: Response):Promise<void> => {
     try {
         // const usuario= await Usuario.findOne({email});
 
-        const usuario = prisma.user.findFirst({
+        const usuario = await prisma.user.findFirst({
             where: {
                 email
             }
