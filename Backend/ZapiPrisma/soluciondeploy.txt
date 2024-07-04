@@ -1,0 +1,3 @@
+ { "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] } esto  va en vercel.json
+
+ crear una carpeta api y
