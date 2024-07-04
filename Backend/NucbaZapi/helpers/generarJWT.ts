@@ -1,6 +1,6 @@
 import  jwt  from "jsonwebtoken";
 
-const generarJWT =(id:string = "") : Promise<string> => {
+const generarJWT =(id:number) : Promise<string> => {
 
     return new Promise((res,rej) => {
 

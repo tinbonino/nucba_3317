@@ -1,37 +1,60 @@
 import { Request, Response } from "express";
-import Order, { IOrder } from "../models/order";
-import { ObjectId } from "mongoose";
+// import Order, { IOrder } from "../models/order";
+// import { ObjectId } from "mongoose";
+
+import {prisma} from "../app";
 
 export const getOrdenes = async (req: Request, res:Response): Promise<void> => {    
-	const usuarioId: ObjectId = req.body.usuarioConfirmado._id;
-	//verificamnos y almacenamos el id de usuario
-	const consulta = { user: usuarioId };
-	//Buscamos el usuario en la colección de orders
-	const orders = await Order.find(consulta);
-	//Retornamos las ordenes correspondientes al usuario
+	
+	const usuarioId: number = req.body.usuarioConfirmado.id;
+
+	const orders = await prisma.order.findMany({
+		where: {
+			user: usuarioId
+		},
+		include: {
+			shippingDetails:true
+		}
+	})
+
+	// //Retornamos las ordenes correspondientes al usuario
 	res.json({
 		data: [...orders],
 	});
 };
 
 export const createOrder = async (req: Request, res: Response): Promise<void> => {
-	const usuario: ObjectId = req.body.usuarioConfirmado._id;
+	const usuario: number = req.body.usuarioConfirmado.id;
 
-	const orderData: IOrder = req.body;
+	const orderData = req.body;
 
-	const data = {
-		...orderData,
-		user: usuario,
-		createdAt: new Date(),
-		status: "pending",
-	};
+	const {price, shippingCost, total, items, shippingDetails} =orderData;
 
-	const order = new Order(data);
+	const order = await prisma.order.create({
+		data: {
+			price,
+			shippingCost,
+			total,
+			items: {
+				create:[...items]
+			},
+			user: usuario,
+			shippingDetails: {
+				create: {
+					...shippingDetails
+				}
+			}
+		},
+		include: {
+			shippingDetails:true,
+			items:true
+		}
+	})
 
-	await order.save();
+
 
 	res.status(201).json({
-		order,
+		data: order,
 	});
 	
 

@@ -5,6 +5,8 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 
 import Usuario, { IUser } from "../models/usuario";
 
+import { prisma } from "../app";
+
 const validarJWT = async (req: Request, res:Response, next: NextFunction): Promise<void> => {
        
 	const token = req.headers["x-token"] as string;  
@@ -22,7 +24,13 @@ const validarJWT = async (req: Request, res:Response, next: NextFunction): Promi
 				      
         const {id} = payload;
 
-		const usuarioConfirmado: IUser | null = await Usuario.findById(id);
+		// const usuarioConfirmado: IUser | null = await Usuario.findById(id);
+
+		const usuarioConfirmado= await prisma.user.findUnique({
+			where:{
+				id:id
+			}
+		})
 
 		if (!usuarioConfirmado) {
 			res.status(401).json({

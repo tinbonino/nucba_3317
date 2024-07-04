@@ -1,4 +1,4 @@
-import {Server} from "./models/server";
+import {Server} from "../models/server";
 import dotenv from "dotenv";
 
 import { PrismaClient } from "@prisma/client";

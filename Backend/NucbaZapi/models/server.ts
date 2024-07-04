@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
-import {dbConnection} from "../database/config";
+// import {dbConnection} from "../database/config";
 
 import authRoutes from "../routes/auth";
 import ordersRoutes from "../routes/orders"
@@ -18,14 +18,14 @@ export class Server {
         this.authPath= "/auth";
         this.ordersPath="/orders";
 
-        this.conectarDB();
+        // this.conectarDB();
         this.middlewares();
         this.routes();
     }
 
-    async conectarDB():Promise<void> {
-        await dbConnection();
-    }
+    // async conectarDB():Promise<void> {
+    //     await dbConnection();
+    // }
 
     middlewares():void {
         this.app.use(cors());
